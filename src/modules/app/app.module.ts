@@ -9,12 +9,12 @@ import { UserModule } from '../user/user.module';
 import { AppController } from './controller/app.controller';
 import { AppService } from './service/app.service';
 
-console.log(process.env.DB_NAME);
+
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: join(process.cwd(), `.env`),
+      envFilePath: (process.cwd(), `.${process.env.NODE_ENV}.env`),
       isGlobal: true,
     }),
     TypeOrmModule.forRootAsync({

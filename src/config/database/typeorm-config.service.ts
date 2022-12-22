@@ -1,17 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { TypeOrmModuleOptions, TypeOrmOptionsFactory } from '@nestjs/typeorm';
 
-console.log(process.env.DB_NAME);
+
 
 @Injectable()
 export class TypeOrmConfigService implements TypeOrmOptionsFactory {
   createTypeOrmOptions(): TypeOrmModuleOptions {
     return {
       type: 'postgres',
-      port: +process.env.DB_PORT || 5432,
-      username: process.env.DB_USERNAME || 'postgres',
+      port: +process.env.DB_PORT ,
+      username: process.env.DB_USERNAME ,
       password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME || 'Shop',
+      database: process.env.DB_NAME ,
       synchronize: true,
       autoLoadEntities:true
     };
